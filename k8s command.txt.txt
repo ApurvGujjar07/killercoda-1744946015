@@ -1,0 +1,20 @@
+1. kubectl get deployment -n nginx
+   # Retrieves all deployments in the 'nginx' namespace. This shows the deployment's configuration and status.
+
+2. kubectl get pods -n nginx
+   # Lists all the pods in the 'nginx' namespace, showing details like pod names and their current status.
+
+3. kubectl scale deployment/nginx-deployment -n nginx --replicas=5
+   # Scales the nginx-deployment to 5 replicas in the 'nginx' namespace. This adjusts the number of pod instances running.
+
+4. kubectl set image deployment/nginx-deployment -n nginx nginx=nginx:latest
+   # Updates the image used in the nginx-deployment to 'nginx:latest'. This applies a new version of the container image.
+
+5. cp deployment.yml replica.yml
+   # Copies the 'deployment.yml' file to 'replica.yml'. This is useful for making a copy of a configuration file for testing or changes without altering the original.
+
+6. kubectl get pods -n nginx -o wide
+   # Lists all the pods in the 'nginx' namespace, with additional details like pod IPs, node names, and more.
+
+7. cp replica.yml daemonsets.yml
+   # Copies the 'replica.yml' file to 'daemonsets.yml'. Similar to the previous 'cp' command, it's used for creating another copy of a config file.
