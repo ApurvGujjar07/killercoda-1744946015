@@ -1,3 +1,7 @@
+
+
+
+
 job commands
 
 # after that run this bottom command 
@@ -6,5 +10,5 @@ job commands
 # you want to chek your  job run this command 
 ## kubectl get job -n nginx
 
-# you want to chek your logs of jon then run this command 
+# you want to chek your logs of job then run this command 
 # kubectl logs pod/demo-jobs-podname -n nginx
