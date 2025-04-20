@@ -1,19 +1,14 @@
-1.To open a file named kind.sh in the Vim editor, you can use the following command in your terminal:
+# 1. To open a file named kind.sh in the Vim editor, you can use the following command in your terminal:
+# vim kind.sh
 
-vim kind.sh
-
-Once you're inside Vim:
-
-Press i to enter insert mode (so you can type or edit the script).
-
-Write or paste your script.
-
-Press Esc to exit insert mode.
-
-Type :wq and press Enter to save and exit.
+# Once you're inside Vim:
+# Press i to enter insert mode (so you can type or edit the script).
+# Write or paste your script.
+# Press Esc to exit insert mode.
+# Type :wq and press Enter to save and exit.
 
 
-2.vim kind.sh file data 
+# 2. vim kind.sh file data (keep this content exactly as is)
 
 #!/bin/bash
 
@@ -38,17 +33,25 @@ rm -rf kind
 echo "kind & kubectl installation complete."
 
 
-3. Command:
+# 3. Command to give full permissions to install_kind.sh
+
 chmod 777 install_kind.sh
 
-Permission set to allow read, write, and execute access for owner, group, and others.
+# This sets read, write, and execute access for owner, group, and others.
 
 
-4.✅ Script install_kind.sh executed. All commands will now run as per the script. Let me know once you want the output summary or final report.
+# 4. Script Execution Info
+
+# ✅ Script install_kind.sh executed.
+# All commands will now run as per the script.
+# Let me know once you want the output summary or final report.
 
 
-5.sudo apt-get update 
+# 5. Update system package index
 
-6.sudo apt-get install docker.io
+sudo apt-get update
 
 
+# 6. Install Docker package
+
+sudo apt-get install docker.io
