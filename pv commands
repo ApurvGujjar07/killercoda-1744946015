@@ -1,0 +1,3 @@
+kubectl apply persistent-volume.yml
+
+kubectl get pv 
