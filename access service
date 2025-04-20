@@ -1,0 +1,22 @@
+kubectl port-forward service/nginx-service -n nginx 80:80 --address=0.0.0.0
+
+Here's what it does:
+
+kubectl port-forward: Forwards one or more local ports to a pod or service.
+
+service/nginx-service: Targets the Kubernetes service named nginx-service.
+
+-n nginx: Specifies the namespace nginx.
+
+80:80: Forwards local port 80 to service port 80.
+
+--address=0.0.0.0: Makes the forwarded port accessible on all network interfaces, not just localhost.
+
+🚨 Security note: Using --address=0.0.0.0 exposes the service to anyone who can reach the machine's IP. Use with caution, especially on public or shared systems.
+
+
+
+
+*****Phir Killercoda ke terminal me:*****
+
+curl http://localhost:8080
