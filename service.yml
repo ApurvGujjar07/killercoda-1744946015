@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+  namespace: nginx      # optional, only if you created this namespace
+spec:
+  selector:
+    app: nginx          # must match the label in your Deployment
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
