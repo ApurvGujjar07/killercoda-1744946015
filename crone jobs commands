@@ -1,0 +1,6 @@
+kubectl apply -f crone-job.yml
+
+kubectl get cronejob -n nginx  
+
+kubectl get pod -n nginx
+
