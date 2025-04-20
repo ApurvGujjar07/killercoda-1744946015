@@ -1,0 +1,20 @@
+##Here’s a step-by-step breakdown of the actions you’ve taken and their results:
+
+**Created a Directory:**
+
+mkdir kind-cluster
+
+This created a directory named kind-cluster to store your Kubernetes cluster-related files.
+
+**Navigated to the Directory:**
+
+cd kind-cluster
+
+You moved into the kind-cluster directory to work on the cluster setup.
+
+**Created a Config File: You opened --> " config.yml with Vim" to configure your Kubernetes cluster. This file defines the cluster setup, including the number of nodes and their roles.
+
+Created the Kubernetes Cluster:
+
+kind create cluster --name=tws-cluster --config=config.yml
+This command created the Kubernetes cluster named tws-cluster using the configuration in config.yml.
