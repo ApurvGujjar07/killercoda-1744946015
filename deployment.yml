@@ -20,4 +20,10 @@ spec:
         image: nginx:1.14.2
         ports:
         - containerPort: 80
-
+        volumeMounts:
+        - mountPath: /var/www/html
+          name: my-volume
+      volumes:
+      - name: my-volume
+        persistentVolumeClaim:
+          claimName: local-pvc   # Ye wahi naam hai jo tumhare PVC me metadata.name me likha hai
