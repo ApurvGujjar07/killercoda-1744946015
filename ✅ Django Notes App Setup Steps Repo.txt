@@ -1,0 +1,128 @@
+✅ Django Notes App Setup Steps Report
+Clone the Repository
+
+git clone https://github.com/LondheShubham153/django-notes-app.git
+
+Navigate to the Project Directory
+cd django-notes-app
+
+Switch to the dev Branch
+git checkout dev
+
+
+List Files in the Directory
+ls
+
+Build Docker Image
+docker build -t notes-app-k8s .
+
+List Docker Images
+docker images
+
+
+[Hint] Token Add Step
+
+(Token step saved as a reminder — you know what to do here)
+
+Tag Docker Image for DockerHub
+docker image tag notes-app-k8s:latest adgujjar/notes-app-k8s:latest
+
+
+Step 9: Push Docker Image to DockerHub
+docker push adgujjar/notes-app-k8s:latest
+
+
+Step 10: Create k8s Directory
+mkdir k8s
+
+Step 11: Move into k8s Directory
+cd k8s
+
+Step 12: Create/Edit Deployment File
+vim deployment.yml
+ **File Content**
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notes-app-deployment
+  namespace: notes-app
+  labels:
+    app: notes-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notes-app
+  template:
+    metadata:
+      labels:
+        app: notes-app
+    spec:
+      containers:
+      - name: notes-app
+        image: adgujjar/notes-app-k8s
+        ports:
+        - containerPort: 8000
+
+        # 👇 ADD THIS 👇
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          failureThreshold: 3
+
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8000
+          initialDelaySeconds: 15
+          periodSeconds: 20
+          failureThreshold: 3
+
+step:-11 create namespace 
+vim namespace.yml
+**filedata**
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: notes-app
+
+
+
+step:-12
+Once you're in the right directory, open the file using Vim:
+
+vim service.yml
+
+**file data**
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: notes-app-service        # The name of the service
+  namespace: notes-app           # It belongs to the 'notes-app' namespace
+spec:
+  selector:
+    app: notes-app               # Matches pods with the label 'app=notes-app'
+  ports:
+    - protocol: TCP              # Uses TCP protocol
+      port: 8000                 # Port exposed by the service
+      targetPort: 8000           # Port on the pod to which traffic will be forwarded
+  type: ClusterIP                # Internal-only service (default type)
+
+step:-13
+
+after complte this step you can run this this command 
+kubectl apply -f service.yml/deployment.yml/namespace.yml  
+
+
+step:-14
+
+kubctl get pods -n notes-app
+
+kubectl port-forward service/notes-app-service -n notes-app 8000:8000 --address=0.0.0.0 
+
+
+add security group in ec2 inbound port 8000 and chek with public ip in browser 
